@@ -148,9 +148,9 @@ constante que você criou.
 'A SOBREMESA é um doce à base de coco, tradicional na América Latina e em Angola.'
 */
 
-const dessert = `${dogNames[0].slice(3,5)}`
+const dessert = `${dogNames[0].slice(3,5)}${dogNames[1].slice(2,4)}${dogNames[3].slice(2,4)}`.replace('n','d')
 
-console.log(dessert)
+// console.log(`A ${dessert} é um doce à base de coco, tradicional na América Latina e em Angola.`)
 
 /*
 12 - Comente o console.log acima e:
@@ -164,3 +164,9 @@ elevado ao cubo, faça o 2º item do array receber todo o valor que ele
 já tem, mais 4;
 - Agora, o resultado exibido no console deve ser 729.
 */
+
+let oddNumber = [3, 5, 7]
+
+oddNumber[1] += 4
+
+// console.log(oddNumber[1] ** 3)
