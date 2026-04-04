@@ -111,9 +111,11 @@ let numbersCount = 0
 for(let i = 0; i < crazyArray.length; i++) {
   const crazyItem = crazyArray[i]
   if(typeof crazyItem == 'boolean') booleansCount++
-    else if(typeof crazyItem == 'string') stringsCount++
-     else(typeof crazyItem == 'number') numbersCount++
+  if(typeof crazyItem == 'number') numbersCount++
+  if(typeof crazyItem == 'string') stringsCount++
 }
+
+console.log(`Boolean ${booleansCount}| String ${stringsCount}| Number ${numbersCount}` )
 
 /*
   06
@@ -133,3 +135,18 @@ for(let i = 0; i < crazyArray.length; i++) {
 */
 
 const randomNumbers = [73, 4, 67, 10, 31, 58]
+const oddNumbers = []
+const evenNumbers = []
+
+for(let i = 0; i < randomNumbers.length; i++) {
+  const number = randomNumbers[i]
+
+  if(number % 2 == 0) evenNumbers.push(number)
+  if(number % 2 == 1) oddNumbers.push(number)
+}
+
+const evenLastNumber = evenNumbers[evenNumbers.length - 1]
+const evenString = `Números pares: ${evenNumbers.join(', ').replace(`, ${evenLastNumber}`, ` e ${evenLastNumber}`)}.`
+const oddLastNumber = oddNumbers[oddNumbers.length - 1]
+const oddString = `Numeros ímpares: ${oddNumbers.join(', ').replace(`, ${oddLastNumber}`, ` e ${oddLastNumber}`)}.`
+console.log(`${oddString} ${evenString}`)
