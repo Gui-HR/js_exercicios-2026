@@ -88,7 +88,14 @@ const myConcat = (array1, array2) => array1.concat(array2)
     mas com o último item removido.
 */
 
+const myPop = array => {
+  array.pop()
+  const removedLastItem = array
 
+  return removedLastItem
+}
+
+// console.log(myPop([1, 2, 3, 4, 5, 6]))
 
 /*
   08
@@ -96,6 +103,14 @@ const myConcat = (array1, array2) => array1.concat(array2)
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
+
+const isNull = value => {
+  if(value === null) return 'É null'
+
+  return 'Não é null'
+}
+
+// console.log(isNull(null))
 
 /*
   09
@@ -108,6 +123,13 @@ const myConcat = (array1, array2) => array1.concat(array2)
     foi exibido.
 */
 
+const invocator = (callback, value) => {
+  return callback(value)
+}
+const showName = name => console.log(name)
+
+invocator(showName, 'Guilherme')
+
 /*
   10
 
@@ -118,6 +140,10 @@ const myConcat = (array1, array2) => array1.concat(array2)
   - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
     resulte no triplo de 33.
 */
+
+const triplicate = number => number * 3
+
+// console.log(invocator(triplicate, 33))
 
 /*
   11
@@ -130,6 +156,14 @@ const myConcat = (array1, array2) => array1.concat(array2)
 
 const numbers = [1, 2, 3]
 
+const showNumbers = (number, index, array) => {
+  const arrayMessage = `O ${index + 1}º item do array ${array} é ${number}.`
+  console.log(arrayMessage)
+}
+
+
+// numbers.forEach(showNumbers)
+
 /*
   12
 
@@ -141,9 +175,15 @@ const numbers = [1, 2, 3]
 const letters = ['v', 'e', 'p']
 let lettersCopy = []
 
-for (let i = 0; i < letters.length; i++) {
-  lettersCopy.push(letters[i])
-}
+const copyLetters = item => lettersCopy.push(item)
+
+// for (let i = 0; i < letters.length; i++) {
+//   lettersCopy.push(letters[i])
+// }
+
+letters.forEach(copyLetters)
+
+// console.log(lettersCopy)
 
 /*
   13
@@ -174,6 +214,9 @@ const review = [
 
 let paragraphs = ''
 
+const paragrafer = text => paragraphs += `<p>${text}</p>`
+review.forEach(paragrafer)
+
 section.innerHTML = paragraphs
 
 /*
@@ -196,3 +239,14 @@ section.innerHTML = paragraphs
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+
+const howMuchLikes = usersLiked => { 
+  if(usersLiked.length === 1) return `${usersLiked[0]} curtiu isso`
+  if(usersLiked.length === 2) return `${usersLiked[0]} e ${usersLiked[1]} curtiram isso`
+  if(usersLiked.length === 3) return `${usersLiked[0]}, ${usersLiked[1]} e ${usersLiked[2]} curtiram isso`
+  if(usersLiked.length > 3) return `${usersLiked[0]}, ${usersLiked[1]}, ${usersLiked[2]} e mais ${usersLiked.length - 3} pessoas curtiram isso`
+
+  return `Ninguém curtiu isso`
+}
+
+console.log(howMuchLikes(['Shay.lr', 'Gilerme_H.R', 'BayernFC', 'dasdas', 'sdfasdasd', 'asdasdsad']))
