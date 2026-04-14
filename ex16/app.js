@@ -70,7 +70,9 @@ eggEl.addEventListener('mousemove', (event) => eggEl.innerText = `Eixo X: ${even
 */
 
 const buttonEl = document.querySelector('button')
-buttonEl.addEventListener('click', () => eggEl.style = 'background-color: lightgoldenrodyellow')
+buttonEl.addEventListener('click', () => {
+  eggEl.style.backgroundColor = 'lightgoldenrodyellow'
+})
 
 /*
   07
@@ -92,3 +94,7 @@ const people = [
   { id: 8, name: 'Matheus Manucci', profession: 'Piloto' },
   { id: 9, name: 'Hamilton Silva', profession: 'Advogado' }
 ]
+
+const isAFrontEndDeveloper = person => {if (person.profession === 'Front-end developer') console.log("O array people contém, no mínimo, um(a) Front-end developer.")}
+
+people.forEach(isAFrontEndDeveloper)
