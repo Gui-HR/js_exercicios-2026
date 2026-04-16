@@ -29,7 +29,7 @@ usernameEl.insertAdjacentElement('afterend', validadeInputEl)
 
 const regex = /^[a-zA-Z]{6,}$/
 
-usernameEl.addEventListener('input', () => {
+const inputValidation = () => {
   if(regex.test(usernameEl.value)) {
     validadeInputEl.textContent = 'Username válido =)'
     validadeInputEl.classList.remove('username-help-feedback')
@@ -40,7 +40,9 @@ usernameEl.addEventListener('input', () => {
   validadeInputEl.textContent = 'O valor deve conter no mínimo caracteres, com apenas letras maiúsculas e/ou minúsculas'
   validadeInputEl.classList.remove('username-success-feedback')
   validadeInputEl.classList.add('username-help-feedback')
-})
+}
+
+usernameEl.addEventListener('input', inputValidation)
 
 /*
   02
@@ -57,7 +59,7 @@ usernameEl.addEventListener('input', () => {
 const formValidateEl = document.createElement('p')
 formEl.insertAdjacentElement('beforeend', formValidateEl)
 
-formEl.addEventListener('click', event => {
+const formValidation = event => {
   event.preventDefault()
   
   if(regex.test(usernameEl.value)) {
@@ -70,7 +72,9 @@ formEl.addEventListener('click', event => {
   formValidateEl.classList.remove('submit-success-feedback')
   formValidateEl.classList.add('submit-help-feedback')
   formValidateEl.textContent = 'Por favor, insira um username válido'
-})
+}
+
+formEl.addEventListener('click', formValidation)
 
 /*
   03
@@ -89,3 +93,13 @@ formEl.addEventListener('click', event => {
         6;
     2) Pesquisar no MDN.
 */
+
+const mySome = (arr, callback) => {
+  for(let i = 0; i < arr.length; i ++) {    
+    if(callback(arr[i], i, arr)) return true
+    if(arr[i] === arr[arr.length - 1]) return false
+  }
+}
+
+console.log(mySome([1, 2, 3], item => item > 2))
+console.log(mySome([1, 3, 5], item => item === 0))
