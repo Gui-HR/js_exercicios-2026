@@ -21,6 +21,11 @@ const questionThree = formEl['question-three']
 const questionFour = formEl['question-four']
 const questionFive = formEl['question-five']
 
+const questionContainersEl = document.querySelectorAll('.question-container')
+
+    console.log(questionContainersEl)
+
+
 formEl.addEventListener('submit', event => {
     event.preventDefault()
     
@@ -33,10 +38,20 @@ formEl.addEventListener('submit', event => {
         questionFive.value
     ]
 
+
     for(let i = 0; i < correctAnswers.length; i++) {
         if(correctAnswers[i] === userAnswers[i]) counter += 20
     }
 
+    scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    })
+
     counterEl.textContent = `${counter}%`
     counterEl.classList.remove('disable')
+
+    
+    
 })
