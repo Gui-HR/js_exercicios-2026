@@ -15,6 +15,7 @@ Independente se você já fez o quiz dos filmes enquanto acompanhava a aula, bus
 const correctAnswers = ['D', 'B', 'C', 'A', 'E']
 const formEl = document.querySelector('form')
 const counterEl = document.querySelector('.counter')
+const counterTextEl = document.querySelector('.counter-text')
 const questionOne = formEl['question-one']
 const questionTwo = formEl['question-two']
 const questionThree = formEl['question-three']
@@ -29,29 +30,41 @@ const questionContainersEl = document.querySelectorAll('.question-container')
 formEl.addEventListener('submit', event => {
     event.preventDefault()
     
-    let counter = 0
-    const userAnswers = [
-        questionOne.value,
-        questionTwo.value,
-        questionThree.value,
-        questionFour.value,
-        questionFive.value
-    ]
+    const calculateScore = () => {
+        let userScore = 0
+        const userAnswers = [
+            questionOne.value,
+            questionTwo.value,
+            questionThree.value,
+            questionFour.value,
+            questionFive.value
+        ]
+    
+        for(let i = 0; i < correctAnswers.length; i++) 
+            if(correctAnswers[i] === userAnswers[i]) userScore += 20
 
-
-    for(let i = 0; i < correctAnswers.length; i++) {
-        if(correctAnswers[i] === userAnswers[i]) counter += 20
+        return userScore
     }
 
-    scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-    })
-
-    counterEl.textContent = `${counter}%`
-    counterEl.classList.remove('disable')
-
+    const showScore = userScore => {
+        scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        })
     
+        counterEl.classList.remove('disable')
+        counterTextEl.classList.remove('disable')
+
+        let counter = 0
+        const increment = setInterval(() => {
+            counterEl.textContent = `${counter}%`
     
+            if(counter === userScore) clearInterval(increment)
+            counter ++
+        }, 50)
+    }
+
+    const userScore = calculateScore()
+    showScore(userScore)
 })

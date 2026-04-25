@@ -59,11 +59,16 @@ form {
     border: 2px solid #7692FF;
     border-left: none;
     border-right: none;
+    text-align: center;
 }
 
 .counter {
     font-size: 80px;
     padding: 10px;
+}
+
+.counter-text {
+    margin-top: 10px;
 }
 
 .disable {
