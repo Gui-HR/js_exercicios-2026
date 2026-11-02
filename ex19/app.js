@@ -16,22 +16,17 @@ const correctAnswers = ['D', 'B', 'C', 'A', 'E']
 const formEl = document.querySelector('form')
 const counterEl = document.querySelector('.counter')
 const counterTextEl = document.querySelector('.counter-text')
+const questionContainersEl = document.querySelectorAll('.question-container')
 const questionOne = formEl['question-one']
 const questionTwo = formEl['question-two']
 const questionThree = formEl['question-three']
 const questionFour = formEl['question-four']
 const questionFive = formEl['question-five']
 
-const questionContainersEl = document.querySelectorAll('.question-container')
-
-    console.log(questionContainersEl)
-
-
 formEl.addEventListener('submit', event => {
     event.preventDefault()
     
     const calculateScore = () => {
-        let userScore = 0
         const userAnswers = [
             questionOne.value,
             questionTwo.value,
@@ -39,9 +34,12 @@ formEl.addEventListener('submit', event => {
             questionFour.value,
             questionFive.value
         ]
-    
-        for(let i = 0; i < correctAnswers.length; i++) 
-            if(correctAnswers[i] === userAnswers[i]) userScore += 20
+
+        const userScore = userAnswers.reduce((acc, answer, i) => {
+            if(answer == correctAnswers[i]) return acc + 20
+
+            return acc
+        }, 0)
 
         return userScore
     }
