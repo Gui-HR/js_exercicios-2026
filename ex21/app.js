@@ -63,7 +63,7 @@ const cartList = cart.reduce((acc, game) => {
   return acc + `\n - ${game.name}`
 }, '')
 
-console.log(cartList)
+// console.log(cartList)
 
 /*
   05
@@ -84,6 +84,9 @@ const tarantinoMovies = [
   { name: 'À Prova de Morte', release: 2007 },
   { name: 'Kill Bill: Volume 1', release: 2003 }
 ]
+const tarantinoMoviesAfter2000 = tarantinoMovies.filter(movie => movie.release < 2000)
+
+// console.log(tarantinoMoviesAfter2000);
 
 /*
   06
@@ -100,6 +103,10 @@ const tvShows = [
   { name: 'House M.D.', releaseYear: 2004 },
   { name: 'Watchmen', releaseYear: 2019 }
 ]
+
+const nameTvShows = tvShows.map(show => show.name)
+
+// console.log(nameTvShows)
 
 /*
   07
