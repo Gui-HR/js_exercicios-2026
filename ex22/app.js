@@ -136,12 +136,25 @@ const pets = [
   { name: 'Chico', age: 6, gender: 'Male', type: 'Dog' }
 ]
 
+const dogs = pets.filter(pet => pet.type == 'Dog' ? true : false)
+const dogsHumanAge = dogs.map(dog => {
+  dog.age = dog.age * 7
+  return dog
+})
+
 /*
   09
   
   - Considerando o array topBrazilmovies, através do map ou do reduce, insira 
     os nomes dos filmes na ul do index.html.
 */
+
+const movieListEl = document.querySelector('ul')
+const movieListContent = topBrazilmovies.reduce((acc, movie) => {
+  return acc += `<li>${movie.title}</li>`
+}, '')
+
+movieListEl.innerHTML = movieListContent
 
 /*
   10
