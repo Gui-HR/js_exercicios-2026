@@ -83,21 +83,12 @@ const reverseOrderedPeople = copy(people).sort().reverse()
 
 const ingredients = ['vinho', 'tomate', 'cebola', 'cogumelo']
 
-
-
-const ingredientsSentence = ingredients.reduce((acc, ingredient) => {
-  if(ingredient[ingredient.length -1] == 'a') {
-    return acc += `${ingredient} cozida, `
-  }
-
-  return acc += `${ingredient} cozido, `
+const ingredientsString = ingredients.reduce((acc, ingredient) => {
+  return ingredient[ingredient.length -1] == 'a' ? acc += `${ingredient} cozida, ` : acc += `${ingredient} cozido, `
 }, '')
 
-console.log(ingredients[ingredients.length -1])
-
-const ingredientsSentenceCorrect = ingredientsSentence.replace(`${ingredients[ingredients.length -1]} cozido,`, `${ingredients[ingredients.length -1]} cozido`)
-
-console.log(ingredientsSentenceCorrect)
+const lastIngredient = ingredients[ingredients.length -1]
+const ingredientsSentence = ingredientsString.replace(`${lastIngredient} cozido,`, `${lastIngredient} cozido`)
 
 /*
   07
@@ -118,6 +109,12 @@ const topBrazilmovies = [
   { title: 'Os Vingadores', peopleAmount: 10968065, distributedBy: 'Disney' },
   { title: 'Dona Flor e Seus Dois Maridos', peopleAmount: 10735524, distributedBy: 'Embrafilme' }
 ]
+
+const disneyViewers = topBrazilmovies.reduce((acc, movie) => {
+  return movie.distributedBy == 'Disney' ? acc += movie.peopleAmount : acc
+}, 0)
+
+// console.log(disneyViewers)
 
 /*
   08
